@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Valentine's Date Plan!</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun, romantic font */
+            background: linear-gradient(to bottom, #ffe6e6, #ffb3ba); /* Pink gradient background */
+            color: #d63384;
+            text-align: center;
+            padding: 50px;
+            position: relative;
+            overflow: auto; /* Ensures scrolling is enabled */
+            min-height: 100vh; /* Makes the page tall enough to scroll if content is long */
+        }
+        /* Floating hearts animation */
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .heart {
+            position: absolute;
+            font-size: 2em;
+            color: red;
+            animation: float 6s infinite linear;
+        }
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .heart:nth-child(3) { left: 30%; animation-delay: 2s; }
+        .heart:nth-child(4) { left: 40%; animation-delay: 3s; }
+        .heart:nth-child(5) { left: 50%; animation-delay: 4s; }
+        .heart:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .heart:nth-child(7) { left: 70%; animation-delay: 6s; }
+        .heart:nth-child(8) { left: 80%; animation-delay: 7s; }
+        .heart:nth-child(9) { left: 90%; animation-delay: 8s; }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            font-size: 2em;
+            margin-top: 40px;
+        }
+        h3 {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        p {
+            font-size: 1.5em;
+            line-height: 1.6;
+        }
+        .big-heart {
+            font-size: 5em;
+            color: red;
+            margin: 20px 0;
+        }
+        .plan-section {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .choice-button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 50px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .choice-button:hover {
+            background-color: #ff1493;
+            transform: scale(1.1);
+        }
+        .hidden {
+            display: none;
+        }
+        .scroll-button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 50px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .scroll-button:hover {
+            background-color: #ff1493;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts">
+        <div class="heart">❤️</div>
+        <div class="heart">💖</div>
+        <div class="heart">❤️</div>
+        <div class="heart">💕</div>
+        <div class="heart">❤️</div>
+        <div class="heart">💖</div>
+        <div class="heart">❤️</div>
+        <div class="heart">💕</div>
+        <div class="heart">❤️</div>
+    </div>
+    <div class="big-heart">❤️</div>
+    <h1>Our Valentine's Date Plan! 💕</h1>
+    <p>Hey Babyyyy, here's what I have in mind for our special day. Can't wait! 🤩</p>
+    <button class="scroll-button" onclick="scrollToPlan()">Scroll Down to See the Plan! ⬇️</button>
+
+    <div class="plan-section" id="plan-start">
+        <h2>Time & Date</h2>
+        <p>After class? Uwi muna ako bebe. February 14th (or the next day if you're busy).</p>
+    </div>
+
+    <div class="plan-section">
+        <h2>Location</h2>
+        <p>Choose your favorite: K flavors or acostic baboy? or luto na lang. Let's make it cozy and fun!</p>
+        <button class="choice-button" onclick="chooseLocation('K flavors or acostic baboy?')">K flavors or acostic baboy? 🍖</button>
+        <button class="choice-button" onclick="chooseLocation('Luto na lang')">Luto na lang! 🏠</button>
+        <p id="chosen-location" class="hidden">You chose: <span id="location-choice"></span> 💖</p>
+        <div id="luto-subsection" class="hidden">
+            <h3>Food Ideas for Luto na lang</h3>
+            <p>How about garlic butter shrimp? Or pick your favorite!</p>
+            <button class="choice-button" onclick="chooseFood('Garlic butter shrimp')">Garlic butter shrimp 🦐</button>
+            <button class="choice-button" onclick="chooseFood('Pasta')">Pasta 🍝</button>
+            <button class="choice-button" onclick="chooseFood('Steak')">Steak 🥩</button>
+            <button class="choice-button" onclick="chooseFood('Surprise')">Surprise me! 🎁</button>
+            <p id="chosen-food" class="hidden">Your food choice: <span id="food-choice"></span> 🤩</p>
+        </div>
+    </div>
+
+    <div class="plan-section">
+        <h2>Activities</h2>
+        <p>Pick what sounds fun!</p>
+        <button class="choice-button" onclick="chooseActivity('Night walk')">Night walk 🌙</button>
+        <button class="choice-button" onclick="chooseActivity('Movie')">Movie night 🎥</button>
+        <button class="choice-button" onclick="chooseActivity('Surprise')">Surprise me! 🎁</button>
+        <p id="chosen-activities" class="hidden">Your choices: <span id="activity-list"></span> 🤩</p>
+    </div>
+
+    <div class="plan-section">
+        <h2>What to Bring</h2>
+        <p>You and your beautiful self. I'll handle the rest! 💖</p>
+    </div>
+
+    <p>I love youuuu, Babyyyyy!! Can't wait to see you. ❤️</p>
+
+    <script>
+        let chosenLocation = '';
+        let chosenActivities = [];
+        let chosenFood = '';
+
+        function scrollToPlan() {
+            document.getElementById('plan-start').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function chooseLocation(choice) {
+            chosenLocation = choice;
+            document.getElementById('location-choice').textContent = choice;
+            document.getElementById('chosen-location').classList.remove('hidden');
+            if (choice === 'Luto na lang') {
+                document.getElementById('luto-subsection').classList.remove('hidden');
+            } else {
+                document.getElementById('luto-subsection').classList.add('hidden');
+                chosenFood = ''; // Reset food choice if not luto
+                document.getElementById('chosen-food').classList.add('hidden');
+            }
+        }
+
+        function chooseActivity(activity) {
+            if (!chosenActivities.includes(activity)) {
+                chosenActivities.push(activity);
+                document.getElementById('activity-list').textContent = chosenActivities.join(', ');
+                document.getElementById('chosen-activities').classList.remove('hidden');
+            }
+        }
+
+        function chooseFood(food) {
+            chosenFood = food;
+            document.getElementById('food-choice').textContent = food;
+            document.getElementById('chosen-food').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
